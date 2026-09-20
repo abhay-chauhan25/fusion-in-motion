@@ -1,0 +1,17 @@
+# Lidar occlusion experiment
+#
+# Question: When lidar detections are temporarily lost due to simulated
+# occlusions, how do the current GGNN coasting and deletion thresholds
+# perform, and at what point do we permanently lose the object track?
+#
+# Three levels of lidar missed-detection rate across five random seeds.
+# IMU, camera, vehicle motion, and tracker settings are fixed.
+# Compare track continuity metrics (time_coverage_fraction,
+# track_fragment_count, missed_object_samples) across groups.
+
+name: Lidar missed-detection rate and track continuity
+base_scenario: initial.yaml
+seeds: [10, 11, 12, 13, 14]
+parameter_combinations: zip
+parameters:
+  lidar.detection_probability: [1.0, 0.6, 0.2]
