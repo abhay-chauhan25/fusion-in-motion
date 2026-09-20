@@ -1,0 +1,16 @@
+# Pure lidar occlusion experiment (camera disabled)
+#
+# Follow-up: the camera-enabled sweep showed that 10 Hz bearing updates
+# prevent lifecycle deletion. This sweep disables the camera to isolate
+# the max_time_without_update_s = 1.0 deletion threshold.
+#
+# Three levels of lidar missed-detection rate across five random seeds.
+# IMU, vehicle motion, and tracker settings are fixed.
+
+name: Lidar occlusion without camera
+base_scenario: initial.yaml
+seeds: [10, 11, 12, 13, 14]
+parameter_combinations: zip
+parameters:
+  camera.enabled: [false, false, false]
+  lidar.detection_probability: [1.0, 0.6, 0.2]
